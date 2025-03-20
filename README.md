@@ -36,6 +36,7 @@ Developed by team *Sigma*, which consist of five 11th graders: Tsvetoslav Makave
 
 ## Подтеми
 <img src="image-1.png" alt="text" width="200"/>
+<img src="image-2.png" alt="text" width="200"/>
 ![alt text](image-1.png) ![alt text](image-2.png) <br/>
 И здраве, и финанси!
 
