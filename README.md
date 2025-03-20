@@ -31,8 +31,7 @@ Developed by team *Sigma*, which consist of five 11th graders: Tsvetoslav Makave
 <br/>
 <br/>
 
-# HackTUES11
-![alt text](image.png)
+
 # Интелигентна количка за пазаруване
 
 ## За проекта
