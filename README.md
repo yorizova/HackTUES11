@@ -20,6 +20,7 @@ Both health and finance!
 * Raspberry Pi display
 * Camera
 * NFC module
+* OpenCV
 
 ## Usage
 Can be used in any super and minimarkets, which aim to make the shopping experience faster and lower the need of cashiers.
@@ -52,6 +53,7 @@ Developed by team *Sigma*, which consist of five 11th graders: Tsvetoslav Makave
 * Raspberry Pi дисплей
 * Камера
 * NFC модул
+* OpenCV
 
 ## Използване
 Може да бъде използвано във всички супер и минимаркети, които имат за цел да направят пазаруването по-бързо и да намалят нуждата от касиери.
