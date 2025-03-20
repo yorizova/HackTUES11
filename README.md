@@ -1,5 +1,5 @@
 # HackTUES11
-![alt text](image.png)
+components/image.png
 # Smart Shopping Cart
 
 ## About the project
