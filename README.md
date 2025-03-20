@@ -7,7 +7,7 @@ The goals of our project are to help customers keep track of their expenses whil
 
 ## Topics
 ![alt text](image-1.png) ![alt text](image-2.png) <br/>
-Both health and finance.
+Both health and finance!
 
 ## Built with
 * Python
@@ -23,9 +23,9 @@ Can be used in any super and minimarkets, which aim to make the shopping experie
 ## The team
 Developed by team *Sigma*, which consist of five 11th graders: Tsvetoslav Makaveev, Boris Belichev, Kristian Kirilov, Maria Koneva and Yoana Rizova.
 
-&nbsp;
-&nbsp;
-
+<br/>
+<br/>
+<br/>
 
 # HackTUES11
 # Интелигентна количка за пазаруване
