@@ -6,7 +6,7 @@
 The goals of our project are to help customers keep track of their expenses whilst shopping, by having the total sum displayed on a screen on their shopping cart, which makes their whole experience in the shop much easier and faster, and limits the need of cashiers. We do this with a Raspberry Pi camera, which uses a YOLO model. This is an AI model, which we've taught to recognise certain groceries. The groceries placed in the cart are recognised by the camera and logged onto the display. Next to the produce's name, the user can see the price of it. The sum of all the products will be displayed as well. If the customer decides they don't need a product anymore, after returning it they can remove it from the list on the display. When they're done shopping, instead of having to get all of their products checked out, they can simply pay by card via our integrated POS terminal device, which is next to the screen.
 
 ## Topics
-![alt text](image-1.png) ![alt text](image-2.png)
+![alt text](image-1.png) ![alt text](image-2.png) <br/>
 Both health and finance.
 
 ## Built with
