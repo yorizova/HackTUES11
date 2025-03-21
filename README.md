@@ -16,6 +16,7 @@ Both health and finance!
 ## Built with
 * Python
 * Raspberry Pi
+* Arduino Uno
 * HX711 sensor
 * Raspberry Pi display
 * Camera
@@ -49,6 +50,7 @@ Developed by team *Sigma*, which consist of five 11th graders: Tsvetoslav Makave
 ## Изграден с
 * Python
 * Raspberry Pi
+* Arduino Uno
 * Сензор HX711
 * Raspberry Pi дисплей
 * Камера
