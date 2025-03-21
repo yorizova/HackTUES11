@@ -15,6 +15,9 @@ import serial
 
 # Initialize Firebase
 cred = credentials.Certificate("/home/cplisplqs/yolo_display/database.json")  # Update path
+cred.GOOGLE_PRIVATE_KEY_ID = os.environ.get("GOOGLE_PRIVATE_KEY_ID")
+cred.GOOGLE_CLIENT_EMAIL = os.environ.get("GOOGLE_CLIENT_EMAIL")
+cred.GOOGLE_PRIVATE_KET = os.environ.get("GOOGLE_PRIVATE_KEY")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 

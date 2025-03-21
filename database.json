@@ -1,9 +1,9 @@
 {
   "type": "service_account",
   "project_id": "smart-shopping-cart-e2d60",
-  "private_key_id": "###",
-  "private_key": "###",
-  "client_email": "firebase-adminsdk-fbsvc@smart-shopping-cart-e2d60.iam.gserviceaccount.com",
+  "private_key_id": "",
+  "private_key": "",
+  "client_email": "",
   "client_id": "102361684097232475348",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
