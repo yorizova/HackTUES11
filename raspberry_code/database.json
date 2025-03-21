@@ -1,8 +1,8 @@
 {
   "type": "service_account",
   "project_id": "smart-shopping-cart-e2d60",
-  "private_key_id": "0aea064bd16d464f4475dd7e957cbfad2ad9ba3f",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDEucbX4zwMX5XH\nq23ZH5WvQPH+hrIHig6BXNQ9q9TLMyXeCoYXbIkj54rPeaZ7jixusCxyZMjECRJJ\nL8zp7n1mT1NA2pUlF750gB7MujBIQKT0UfVguqWKUdcVtEzD5xHzn2gDhsUvPyGh\n/cKrmRWIwlTbBBWFbe90Ql34FmVBstkKxtH7aRMfsgUkpBghFE8YYZnihL/jIRUU\nHIUxbsTUnj4BUIu8lSTkjkj3RCIzzg29Yj7ewmX7JQWa0iGX1tapbM48B+4sOcsP\nmOsa3ADIK4LJiH0R223Z/rIAq9QLw6h4LXXJBagZ9gZMXBvFjB0in3ufWPIISj/E\nkigPP375AgMBAAECggEALpLa4AaEk1tXzu8ncPVYzyZdhEgoQr+tAnRTLQyOstK3\nntM3/rir2Qu6obbnsq2smEHuK+DvZPXO1fPSm/lhx8R07dAx6heud89TO13DC3/+\nbXcv1AgsI8yPUqyeVezRI6+0BM21xiM4l6zHly+FWRzE0Rss6ytlOs1xiMfojf5a\nr4HD1YDnUXQ6JFNo42UdALmahhp2m295DcQvgqs6/jIelxT/ddwr278boOPGHFwq\n4dGTodDgldAzRC2CVGmRWzgEYGRSzdqyIYFIFqYcBqXeOc1S6gPpoOZYmROtXPMT\naBFxYTA07yeaxxxL/EEBXh9Yu0JN01UeXHZhHYgwvwKBgQDohwpaO7c1R/+WBzwQ\nVV77E5uHr/SLF/A75pfQOHHaJF4cvX9N5MJYjHKItCrYGfkNAYtYgx0XbN2W3zyf\n+M68f6avz2hrNgRx3kbmn8KqFDlwONPeYWpAI10GeqF4ydpzM03KCZBH6n8R7KEv\nyAs/y4g50bKUW75NP0VZ2chDmwKBgQDYlYxh2XBEWU8hIwHUBetCSMI4+fpgu+C5\n8KfSYrau8+nj0SS6n7S9lA9z3m2LeGDqbS2bL/zQdEd22CYI4vAEPRr1V3vYKbQo\nFAS7UHxEf+QZc3emclta/dHQ42YpUboUSsqTtKywT1VDceMDrLRwwQgL+tNErMD7\nchcp9voC+wKBgCzgIvdXHvyBcKobq1PbpgD+v71oD+HoNMzaq+Hbgt1+t0sEp1T5\nGSjNsiz/2GTsXkxMSABFDZA/ymQboS+ebQej+x9i/9vxCNqQ803+9yqrzIoD7Z+1\nXTQTnxhpAlC1ZBtng1PClL3MW8mxyUnXaZReS2QdPEG1kvyFgXTduvCRAoGALNor\njEf/W+gy3uXlBweCxONUdYAvPcEqtNcFqigPNQQGN8ukE5HnWCtFV/WEMhHn4CRk\nAXNao8Cw3Ae/OK/mjLoqzwwi9Y0NZg9fO3tbgMQLdMnYyXt9N8bAoMW27m+iXXlv\nok8URB7pxWHcZXJqm78d730uK1arUGc8LNCczekCgYBSkWVtoR+V2QgcJNNXWsVf\nnoArVpPJWG1IJww5qRtNuSi47tTa4cZtEncRIXKY6X3k5cWVdNtS2i9GMd4yUTZS\nC+SRrrjorOnk++cjwWd4Bck2gUCaPJpiNX9bLu6zUbHTgZxwtgfIlFkD+8PRg8NA\nVjdkueYrObhGwGUeXqbYYw==\n-----END PRIVATE KEY-----\n",
+  "private_key_id": "###",
+  "private_key": "###",
   "client_email": "firebase-adminsdk-fbsvc@smart-shopping-cart-e2d60.iam.gserviceaccount.com",
   "client_id": "102361684097232475348",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
