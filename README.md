@@ -22,6 +22,7 @@ Both health and finance!
 * Camera
 * NFC module
 * OpenCV
+* Firebase
 
 ## Usage
 Can be used in any super and minimarkets, which aim to make the shopping experience faster and lower the need of cashiers.
@@ -56,6 +57,7 @@ Developed by team *Sigma*, which consist of five 11th graders: Tsvetoslav Makave
 * Камера
 * NFC модул
 * OpenCV
+* Firebase
 
 ## Използване
 Може да бъде използвано във всички супер и минимаркети, които имат за цел да направят пазаруването по-бързо и да намалят нуждата от касиери.
