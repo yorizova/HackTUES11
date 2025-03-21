@@ -34,7 +34,7 @@ const int calVal_eepromAdress = 0;
 unsigned long t = 0;
 
 void setup() {
-  Serial.begin(57600); delay(10);
+  Serial.begin(115200); delay(10);
   Serial.println();
   Serial.println("Starting...");
 
@@ -57,7 +57,7 @@ void setup() {
 
 void loop() {
   static boolean newDataReady = 0;
-  const int serialPrintInterval = 0; //increase value to slow down serial print activity
+  const int serialPrintInterval = 0;
 
   // check for new data/start next conversion:
   if (LoadCell.update()) newDataReady = true;
@@ -76,9 +76,9 @@ void loop() {
   // receive command from serial terminal
   if (Serial.available() > 0) {
     char inByte = Serial.read();
-    if (inByte == 't') LoadCell.tareNoDelay(); //tare
-    else if (inByte == 'r') calibrate(); //calibrate
-    else if (inByte == 'c') changeSavedCalFactor(); //edit calibration value manually
+    if (inByte == 't') LoadCell.tareNoDelay(); 
+    else if (inByte == 'r') calibrate(); 
+    else if (inByte == 'c') changeSavedCalFactor();
   }
 
   // check if last tare operation is complete
@@ -127,8 +127,8 @@ void calibrate() {
     }
   }
 
-  LoadCell.refreshDataSet(); //refresh the dataset to be sure that the known mass is measured correct
-  float newCalibrationValue = LoadCell.getNewCalibration(known_mass); //get the new calibration value
+  LoadCell.refreshDataSet(); 
+  float newCalibrationValue = LoadCell.getNewCalibration(known_mass);
 
   Serial.print("New calibration value has been set to: ");
   Serial.print(newCalibrationValue);
