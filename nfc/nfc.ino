@@ -1,11 +1,3 @@
-    /*
-  PN532-NFC-RFID-Module-Library
-  modified on 18 Nov 2020
-  by Amir Mohammad Shojaee @ Electropeak
-  Home
-
-  based on www.electroschematics.com Arduino Examples
-*/
 
 #include <SoftwareSerial.h>
 
@@ -38,7 +30,6 @@ void setup(void) {
 
   }
 
-  // Got valid data, print it out!
 
   Serial.print("Found chip PN5"); Serial.println((versiondata>>24) & 0xFF, HEX);
 
@@ -46,7 +37,6 @@ void setup(void) {
 
   Serial.print('.'); Serial.println((versiondata>>8) & 0xFF, DEC);
 
-  // Configure board to read RFID tags
 
   nfc.SAMConfig();
 
@@ -58,9 +48,9 @@ void loop(void) {
 
   boolean success;
 
-  uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };  // Buffer to store the returned UID
+  uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };  
 
-  uint8_t uidLength;                       // Length of the UID (4 or 7 bytes depending on ISO14443A card type)
+  uint8_t uidLength;                       
 
 success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, &uid[0], &uidLength);
 
@@ -82,7 +72,7 @@ success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, &uid[0], &uidLength);
 
     Serial.println("");
 
-    // 2 second halt
+    
 
     delay(2000);
 
@@ -92,7 +82,7 @@ success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, &uid[0], &uidLength);
 
   {
 
-    // PN532 probably timed out waiting for a card
+    
 
     Serial.println("Timed out! Waiting for a card...");
 
