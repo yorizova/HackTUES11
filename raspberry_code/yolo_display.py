@@ -11,7 +11,7 @@ from PIL import Image, ImageTk
 import threading
 import firebase_admin
 from firebase_admin import credentials, firestore
-
+#s
 cred = credentials.Certificate("/home/cplisplqs/yolo_display/database.json")  
 firebase_admin.initialize_app(cred)
 db = firestore.client()
