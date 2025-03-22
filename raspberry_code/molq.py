@@ -8,7 +8,7 @@ import cv2
 from ultralytics import YOLO
 
 # Initialize Firebase
-cred = credentials.Certificate("/home/cplisplqs/yolo_display/database.json")  # Update path
+cred = credentials.Certificate("/home/rpi5/hacktues/HackTUES11/database.json")  # Update path
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
