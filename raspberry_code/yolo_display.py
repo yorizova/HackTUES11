@@ -109,7 +109,7 @@ img_count = 0
 
 
 # Create a list to store the detection information
-detections_list = []
+detections_list = ["hallodsjd"]
 
 arduino1 = serial.Serial('/dev/ttyUSB0', 115200)  
 arduino2 = serial.Serial('/dev/ttyACM0', 115200)  
