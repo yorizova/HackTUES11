@@ -2,7 +2,6 @@ import tkinter as tk
 import firebase_admin
 from firebase_admin import credentials, firestore
 import serial
-import os
 import threading
 import time
 import cv2
@@ -12,12 +11,12 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-cred = credentials.Certificate("/home/rpi5/hacktues/HackTUES11/database.json")  # Update path
+cred = credentials.Certificate("/home/rpi5/hacktues/HackTUES11/database.json")  
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-arduino1 = serial.Serial('/dev/ttyUSB0', 115200)
-arduino2 = serial.Serial('/dev/ttyACM1', 115200)
+arduino1 = serial.Serial('/dev/ttyUSB0', 115200)  
+arduino2 = serial.Serial('/dev/ttyACM0', 115200)  
 
 
 def get_product_price(product_name):
@@ -28,17 +27,18 @@ def get_product_price(product_name):
 
         if product_doc.exists:
             data = product_doc.to_dict()
-            return float(data.get("price", 0))  # Return price as float, default to 0 if not found
+            return float(data.get("price", 0))  
         else:
-            return 0  # Return 0 if product not found
+            return 0  
     except Exception as e:
         print(f"Error fetching price for {product_name}: {e}")
-        return 0
+        return 0  
         
 def mail(subject, body):
-    sender_email = "zsmartshoppingcart11@gmail.com"
+    sender_email = "zwetoslaw@gmail.com"
     receiver_email = "cvetoda@gmail.com"
-    password = os.environ.get("APP_PASSWORD")
+    password = "iivi myiy dbye ffmn"  
+
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
@@ -48,7 +48,7 @@ def mail(subject, body):
 
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
-            server.starttls()
+            server.starttls()  
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         print("Email sent successfully!")
@@ -77,7 +77,7 @@ class DisplayApp:
         self.canvas = tk.Canvas(root, highlightthickness=0, bd=0)
         self.canvas.pack(fill="both", expand=True)
 
-        self.original_bg_image = Image.open("../image.png")
+        self.original_bg_image = Image.open("background.jpg")
         self.bg_image_tk = None
         self.update_background()
 
@@ -90,7 +90,7 @@ class DisplayApp:
         self.add_button = tk.Button(root, text="Add Item", command=self.add_item_from_camera, font=("Helvetica", 16), bg="#FF0000", fg="white", relief="flat", height=2, width=15)
         self.add_button.place(relx=0.4, rely=0.7, anchor="center")
 
-        self.remove_button = tk.Button(root, text="Remove Selected", command=self.remove_item, font=("Helvetica", 16), bg="#FF0000", fg="white", relief="flat", height=2, width=15)
+        self.remove_button = tk.Button(root, text="Remove All", command=self.remove_item, font=("Helvetica", 16), bg="#FF0000", fg="white", relief="flat", height=2, width=15)
         self.remove_button.place(relx=0.6, rely=0.7, anchor="center")
 
         self.checkout_button = tk.Button(root, text="Check Out", command=self.checkout, font=("Helvetica", 16), bg="#008000", fg="white", relief="flat", height=2, width=15)
@@ -123,28 +123,29 @@ class DisplayApp:
         price = get_product_price(item)
         
         item_frame = tk.Frame(self.items_frame, bg="white")
-        item_frame.pack(fill="x", pady=2)
+        item_frame.pack(fill="x", pady=2, anchor="center")  
 
         item_label = tk.Label(item_frame, text=item, font=("Helvetica", 14), bg="white", fg="black", width=20)
-        item_label.pack(side="left", padx=5)
-
+        item_label.grid(row=0, column=0, padx=5, pady=2, sticky="w")  
         minus_button = tk.Button(item_frame, text="-", command=lambda: self.decrease_item(item), font=("Helvetica", 12), bg="#FF0000", fg="white", relief="flat", width=2)
-        minus_button.pack(side="left", padx=2)
+        minus_button.grid(row=0, column=1, padx=2, pady=2)
 
         quantity_label = tk.Label(item_frame, text="1", font=("Helvetica", 14), bg="white", fg="black", width=5)
-        quantity_label.pack(side="left", padx=2)
+        quantity_label.grid(row=0, column=2, padx=2, pady=2)
 
         plus_button = tk.Button(item_frame, text="+", command=lambda: self.increase_item(item, price), font=("Helvetica", 12), bg="#008000", fg="white", relief="flat", width=2)
-        plus_button.pack(side="left", padx=2)
+        plus_button.grid(row=0, column=3, padx=2, pady=2)
+        
+        grams_label = tk.Label(item_frame, text=f"{read_from_arduino.last_line} grams", font=("Helvetica", 14), bg="white", fg="black", width=10)
+        grams_label.grid(row=0, column=4, padx=50, pady=2)
 
         price_label = tk.Label(item_frame, text=f"{price:.2f} EUR", font=("Helvetica", 14), bg="white", fg="black", width=10)
-        price_label.pack(side="left", padx=5)
+        price_label.grid(row=0, column=5, padx=50, pady=2)
 
         self.item_quantities[item] = quantity_label
         self.item_price_labels[item] = price_label
 
         self.update_total()
-
     def remove_item(self):
         """Removes the selected item from the items_frame and updates the total price."""
         for child in self.items_frame.winfo_children():
@@ -162,13 +163,11 @@ class DisplayApp:
             total += quantity * price
         self.total_label.config(text=f"Total: {total:.2f} EUR")
 
-
     def add_item_from_camera(self):
         """Load YOLO model and use the camera to detect items when 'Add Item' is clicked."""
-
         labels = self.model.names
 
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(0)  
         if not cap.isOpened():
             print("Error: Could not open camera.")
             return
@@ -176,7 +175,10 @@ class DisplayApp:
         print("Camera opened. Detecting items...")
 
         while True:
-            read_from_arduino(arduino2)
+            last_line = read_from_arduino(arduino2)  
+            if last_line:
+                print(f"Last line from Arduino 2: {last_line}")
+
             ret, frame = cap.read()
             if not ret:
                 print("Failed to capture frame.")
@@ -193,20 +195,22 @@ class DisplayApp:
                 classname = labels[classidx]
                 conf = detections[i].conf.item()
 
-                if conf > 0.5:
+                if conf > 0.5:  
                     print(f"Detected: {classname}")
                     self.add_item(classname)
-                    cap.release()
-                    return
 
+                    cap.release()
+                    return  
         cap.release()
         cv2.destroyAllWindows()
+
+    
+
 
     def checkout(self):
         """Handle the checkout process (e.g., calculate total, confirm order, send email)."""
         total = 0.0
-        product_details = []
-
+        product_details = []  
         for item, price_label in self.item_price_labels.items():
             quantity = int(self.item_quantities[item].cget("text"))
             price = float(price_label.cget("text").split()[0])
@@ -219,10 +223,11 @@ class DisplayApp:
         try:
             read_from_arduino(arduino1)
             print(f"Checking out! Total: {total:.2f} EUR")
+            mail(subject="Your Receipt", body=email_body)
+
         except Exception as e:
             print(f"Error communicating with Arduino 1: {e}")
 
-        mail(subject="Your Receipt", body=email_body)
 
         self.remove_item()
 
@@ -245,27 +250,35 @@ class DisplayApp:
                 
                 self.update_total()
 
-def read_from_arduino(arduino):
-    """Read data from Arduino."""
+
+def read_from_arduino(arduino, output_file="output.txt"):
+    """Read data from Arduino and write the last line to a file."""
     try:
         if arduino.in_waiting > 0:
-            for i in range(14):
+            last_data = None  
+            for i in range(14):  
                 data = arduino.readline().decode('utf-8').strip()
-                print(data)
+                last_data = data  
+            read_from_arduino.last_line = last_data
+            return last_data  
     except Exception as e:  
         print(f"Error reading from Arduino: {e}")
+        return None  
+
+read_from_arduino.last_line = None
+
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = DisplayApp(root)
 
-    # Start a thread to periodically read from Arduino
+  # Start a thread to periodically read from Arduino
   #  def arduino_read_loop():
-   #     while True:
-   #         read_from_arduino(arduino1)
-    #        time.sleep(0.1)  # Adjust sleep time as needed
+  #     while True:
+  #         read_from_arduino(arduino1)
+  #        time.sleep(0.1)  # Adjust sleep time as needed
 
-    #arduino_thread = threading.Thread(target=arduino_read_loop, daemon=True)
+  #arduino_thread = threading.Thread(target=arduino_read_loop, daemon=True)
   #  arduino_thread.start()
 
     root.mainloop()
