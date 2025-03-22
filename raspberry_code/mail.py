@@ -1,10 +1,11 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
 
 sender_email = "smartshoppingcart11@gmail.com"
 receiver_email = "cvetoda@gmail.com"
-password = "###"
+password = os.environ.get("APP_PASSWORD")
 subject = "Test Email from Raspberry Pi"
 body = "This is a test email sent from a Raspberry Pi using Python."
 

@@ -2,6 +2,7 @@ import tkinter as tk
 import firebase_admin
 from firebase_admin import credentials, firestore
 import serial
+import os
 import threading
 import time
 import cv2
@@ -11,14 +12,12 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-# Initialize Firebase
 cred = credentials.Certificate("/home/rpi5/hacktues/HackTUES11/database.json")  # Update path
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-# Initialize Arduino
-arduino1 = serial.Serial('/dev/ttyUSB0', 115200)  # Non-blocking mode
-arduino2 = serial.Serial('/dev/ttyACM1', 115200)  # Non-blocking mode
+arduino1 = serial.Serial('/dev/ttyUSB0', 115200)
+arduino2 = serial.Serial('/dev/ttyACM1', 115200)
 
 
 def get_product_price(product_name):
@@ -39,8 +38,7 @@ def get_product_price(product_name):
 def mail(subject, body):
     sender_email = "zsmartshoppingcart11@gmail.com"
     receiver_email = "cvetoda@gmail.com"
-    password = "###"
-
+    password = os.environ.get("APP_PASSWORD")
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
