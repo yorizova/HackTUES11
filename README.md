@@ -7,7 +7,7 @@ The goals of our project are to help customers keep track of their expenses whil
 
 ## Logic
 <div>
-    <img src="logic_scheme.png" alt="text" width="200"/>
+    <img src="logic_scheme.png" alt="text" width="600"/>
 </div>
 <br/>
 
@@ -40,7 +40,7 @@ Developed by team *Sigma*, which consist of five 11th graders: Tsvetoslav Makave
 
 ## Логика
 <div>
-    <img src="logic_scheme.png" alt="text" width="200"/>
+    <img src="logic_scheme.png" alt="text" width="600"/>
 </div>
 <br/>
 
