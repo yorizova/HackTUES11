@@ -6,6 +6,7 @@ import threading
 import time
 import cv2
 from ultralytics import YOLO
+from PIL import Image, ImageTk
 
 # Initialize Firebase
 cred = credentials.Certificate("/home/rpi5/hacktues/HackTUES11/database.json")  # Update path
@@ -13,7 +14,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Initialize Arduino
-arduino1 = serial.Serial('/dev/ttyUSB0', 115200, timeout=0.1)  # Non-blocking mode
+# arduino1 = serial.Serial('/dev/ttyUSB0', 115200, timeout=0.1)  # Non-blocking mode
 
 def get_product_price(product_name):
     """Fetch the price of a product from Firebase."""
@@ -52,7 +53,7 @@ class DisplayApp:
         self.canvas = tk.Canvas(root, highlightthickness=0, bd=0)
         self.canvas.pack(fill="both", expand=True)
 
-        self.original_bg_image = Image.open("background.jpg")
+        self.original_bg_image = Image.open("../image.png")
         self.bg_image_tk = None
         self.update_background()
 
@@ -79,6 +80,9 @@ class DisplayApp:
         # Dictionary to store item quantities and price labels
         self.item_quantities = {}
         self.item_price_labels = {}
+        
+        self.model = YOLO("my_model.pt", task='detect')
+
 
     def update_background(self):
         """Resize and update the background image dynamically."""
@@ -149,8 +153,7 @@ class DisplayApp:
     def add_item_from_camera(self):
         """Load YOLO model and use the camera to detect items when 'Add Item' is clicked."""
         # Load YOLO model
-        model = YOLO("my_model_ncnn_model", task='detect')
-        labels = model.names
+        labels = self.model.names
 
         # Initialize camera
         cap = cv2.VideoCapture(0)  # Use the default camera (index 0)
@@ -167,7 +170,7 @@ class DisplayApp:
                 break
 
             # Run inference on frame
-            results = model(frame, verbose=False)
+            results = self.model(frame, verbose=False)
             detections = results[0].boxes
 
             for i in range(len(detections)):
@@ -184,11 +187,6 @@ class DisplayApp:
                     cap.release()
                     return  # Exit after adding the first detected item
 
-            # Display the frame (optional)
-            cv2.imshow("Camera", frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):  # Press 'q' to exit
-                break
-
         cap.release()
         cv2.destroyAllWindows()
 
@@ -201,7 +199,7 @@ class DisplayApp:
             total += quantity * price
 
         try:
-            read_from_arduino(arduino1)
+            # read_from_arduino(arduino1)
             print(f"Checking out! Total: {total:.2f} EUR")
         except Exception as e:
             print(f"Error communicating with Arduino 1: {e}")
@@ -225,14 +223,14 @@ class DisplayApp:
                 self.update_total()
 
 # Function to read from Arduino
-def read_from_arduino(arduino):
-    """Read data from Arduino."""
-    try:
-        if arduino.in_waiting > 0:
-            data = arduino.readline().decode('utf-8').strip()
-            print(f"Received from Arduino: {data}")
-    except Exception as e:
-        print(f"Error reading from Arduino: {e}")
+# def read_from_arduino(arduino):
+ #    """Read data from Arduino."""
+ #    try:
+ #        if arduino.in_waiting > 0:
+  #           data = arduino.readline().decode('utf-8').strip()
+   #          print(f"Received from Arduino: {data}")
+  #   except Exception as e:
+  #       print(f"Error reading from Arduino: {e}")
 
 # Start Tkinter loop
 if __name__ == "__main__":
@@ -240,12 +238,12 @@ if __name__ == "__main__":
     app = DisplayApp(root)
 
     # Start a thread to periodically read from Arduino
-    def arduino_read_loop():
-        while True:
-            read_from_arduino(arduino1)
-            time.sleep(0.1)  # Adjust sleep time as needed
+  #  def arduino_read_loop():
+   #     while True:
+   #         read_from_arduino(arduino1)
+    #        time.sleep(0.1)  # Adjust sleep time as needed
 
-    arduino_thread = threading.Thread(target=arduino_read_loop, daemon=True)
-    arduino_thread.start()
+    #arduino_thread = threading.Thread(target=arduino_read_loop, daemon=True)
+  #  arduino_thread.start()
 
     root.mainloop()
